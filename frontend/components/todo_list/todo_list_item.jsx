@@ -18,17 +18,16 @@ class TodoListItem extends React.Component {
   }
 
   checkToggle(event) {
-    event.preventDefault();
+    // event.preventDefault(); AHHHHHHHHHHHHHHHHHHHHHHHH
     const toggledTodo = merge({}, this.props.todo, {done: !this.props.todo.done});
     this.props.receiveTodo(toggledTodo);
   }
 
   render() {
-    const done = this.props.todo.done;
     return (
       <li>
         { this.props.todo.title }
-        <button onClick={this.checkToggle}>{done ? "Done" : "Not Done"}</button>
+        <input type="checkbox" onChange={this.checkToggle} checked={this.props.todo.done}/>
         <button onClick={this.removeTodo}>Remove TODO</button>
       </li>
     );
